@@ -4,9 +4,9 @@
 # Raspberry Pi 4B running Ubuntu 22.04.5 LTS Desktop for STEAM robotics.
 # ============================================================================
 # Usage:
-#   wget -O Auto-Pi4-Ubuntu-Desk-22.04-Tools-Apps-Install.sh https://raw.githubusercontent.com/jimTheSTEAMClown/Robots-Rovers-Project-Template/refs/heads/main/Raspberry/imageSetup/Auto-Pi4-Ubuntu-Desk-22.04-Tools-Apps-Install.sh
-#   chmod 755 Auto-Pi4-Ubuntu-Desk-22.04-Tools-Apps-Install.sh
-#   ./Auto-Pi4-Ubuntu-Desk-22.04-Tools-Apps-Install.sh
+#   wget -O Auto-Pi4B-Ubuntu-Desk-22.04.5-Tools-Apps-ROS2-Install.sh https://raw.githubusercontent.com/jimTheSTEAMClown/Robots-Rovers-Project-Template/refs/heads/main/Raspberry/imageSetup/Auto-Pi4B-Ubuntu-Desk-22.04.5-Tools-Apps-ROS2-Install.sh
+#   chmod 755 Auto-Pi4B-Ubuntu-Desk-22.04.5-Tools-Apps-ROS2-Install.sh
+#   ./Auto-Pi4B-Ubuntu-Desk-22.04.5-Tools-Apps-ROS2-Install.sh
 # ============================================================================
 # Source: STEAM Clown - www.steamclown.org
 # GitHub: https://github.com/jimTheSTEAMClown/Robots-Rovers-Project-Template
