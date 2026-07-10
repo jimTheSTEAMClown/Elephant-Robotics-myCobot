@@ -56,12 +56,12 @@
 #  STEP  4 - Hardware, GPIO, I2C, Serial, and ESP Tools
 #  STEP  5 - UART Configuration for myCobot 280 Pi (ttyAMA0)
 #  STEP  6 - Robot Python Environment and pymycobot
-#  STEP  7 - Text Editors and IDEs (VS Code ARM64 + Thonny)
+#  STEP  7 - Text Editors and IDEs (Thonny)
 #  STEP  8 - Web Browser (Chromium ARM64)
 #  STEP  9 - Docker and Docker Compose
 #  STEP 10 - GNOME Desktop Tweaks and neofetch
 #  STEP 11 - VNC Remote Desktop (gnome-remote-desktop)
-#  STEP 12 - Arduino (Legacy 1.8.x ARM64 via apt)
+#  Removed - STEP 12 - Arduino (Legacy 1.8.x ARM64 via apt)
 #  STEP 13 - Git Global Config (interactive)
 #  STEP 14 - ROS 2 Humble + MoveIt 2 + myCobot ROS Package
 #  STEP 15 - Verify All Installs
@@ -73,8 +73,8 @@
 #   https://github.com/elephantrobotics/mycobot_ros2
 #   https://gpiozero.readthedocs.io/en/stable/
 #   https://docs.docker.com/engine/install/ubuntu/
-#   https://code.visualstudio.com/docs/setup/linux
-#   https://docs.platformio.org/en/latest/core/installation/index.html
+#   
+#   
 # ============================================================================
 
 # ============================================================================
@@ -683,9 +683,6 @@ echo "STEP 7 - TEXT EDITORS AND IDEs"
 echo "  Installing:"
 echo "    - vim, nano  (terminal editors)"
 echo "    - thonny     (beginner Python IDE; good for students)"
-echo "    - VS Code    (via Microsoft official ARM64 .deb repo)"
-echo "  NOTE: VS Code snap is amd64 ONLY and fails on Pi ARM64."
-echo "        Using Microsoft's official .deb ARM64 repo."
 echo "============================================================"
 
     echo " "
@@ -703,27 +700,7 @@ echo "============================================================"
     echo "----------------------------------------------------"
     sudo apt-get install -y thonny
 
-    echo " "
-    echo "----------------------------------------------------"
-    echo "Installing VS Code via Microsoft ARM64 .deb repository"
-    echo "  Step 7a: Add Microsoft GPG key"
-    echo "----------------------------------------------------"
-    sudo install -m 0755 -d /etc/apt/keyrings
-    curl -fsSL https://packages.microsoft.com/keys/microsoft.asc | \
-        sudo gpg --dearmor -o /etc/apt/keyrings/microsoft.gpg
-    sudo chmod a+r /etc/apt/keyrings/microsoft.gpg
-    echo "  Microsoft GPG key added"
-
-    echo "  Step 7b: Add VS Code ARM64 apt repository"
-    echo "deb [arch=arm64 signed-by=/etc/apt/keyrings/microsoft.gpg] \
-https://packages.microsoft.com/repos/code stable main" | \
-        sudo tee /etc/apt/sources.list.d/vscode.list > /dev/null
-    echo "  VS Code repository added"
-
-    echo "  Step 7c: Update apt and install VS Code"
-    sudo apt-get update
-    sudo apt-get install -y code
-
+    
     echo " "
     echo "----------------------------------------------------"
     echo "Configuring nano with sane defaults for students"
@@ -745,9 +722,7 @@ NANOEOF
     echo "----------------------------------------------------"
     echo "Done: TEXT EDITORS AND IDEs"
     echo "----------------------------------------------------"
-    code --version 2>/dev/null | head -1 && echo "  VS Code: OK" || \
-        echo "  VS Code: verify with 'code --version' in a new terminal"
-
+    
 # ============================================================================
 # STEP 8 - WEB BROWSER (CHROMIUM ARM64)
 # Google Chrome has no ARM64 Linux build.
@@ -877,27 +852,7 @@ echo "============================================================"
     echo "  4. Connect: vnc://$(hostname -I | awk '{print $1}'):5900"
     echo "----------------------------------------------------"
 
-# ============================================================================
-# STEP 12 - ARDUINO (LEGACY 1.8.x ARM64 VIA APT)
-#
-# Arduino IDE 2.x has NO official ARM64 Linux build.
-# Arduino Legacy 1.8.x via apt is ARM64 native and fully functional.
-# For students using PlatformIO in VS Code, this step is supplementary.
-# ============================================================================
-echo " "
-echo "============================================================"
-echo "STEP 12 - ARDUINO (Legacy 1.8.x ARM64 via apt)"
-echo "  NOTE: Arduino IDE 2.x has no official ARM64 Linux build."
-echo "  Installing Arduino Legacy 1.8.x (ARM64 native, from Ubuntu repos)"
-echo "  Launch: arduino   or   Applications > Programming > Arduino IDE"
-echo "============================================================"
 
-    sudo apt-get install -y arduino
-    sudo usermod -aG dialout "$USER"   # ensure dialout group for USB upload
-
-    echo "----------------------------------------------------"
-    echo "Done: ARDUINO LEGACY 1.8.x"
-    echo "----------------------------------------------------"
 
 # ============================================================================
 # STEP 13 - GIT GLOBAL CONFIG (interactive)
@@ -1211,9 +1166,7 @@ echo " "
 echo "--- IDEs and Editors ---"
 check_cmd "vim"           vim
 check_cmd "nano"          nano
-check_cmd "thonny"        thonny
-check_cmd "code"          code
-check_cmd "arduino"       arduino  --version 2>/dev/null || true
+# check_cmd "thonny"        thonny
 
 echo " "
 echo "--- Browser ---"
